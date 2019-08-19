@@ -54,6 +54,7 @@
   "dependencies": {
     "commander": "^3.0.0",
     "form-data": "^2.3.3",
+    "get-parameter-names": "^0.3.0",
     "humps": "^2.0.1",
     "ky": "^0.12.0",
     "ky-universal": "^0.3.0",

@@ -7,8 +7,27 @@ import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
 import typescript from 'typescript';
 import pkg from './package.json';
+import getParameterNames from 'get-parameter-names';
+
 
 export default [
+  // CLI build
+  {
+    input: 'src/cli/gitlab.ts',
+    output: {
+      file: pkg.bin.gitlab,
+      format: 'cjs',
+    },
+    external: [...Object.keys(pkg.dependencies)],
+    plugins: [
+      json(),
+      globals(),
+      builtins(),
+      ts({ typescript }),
+      terser(),
+    ],
+  },
+
   // Browser-friendly UMD build
   {
     input: 'src/core/index.ts',
@@ -64,23 +83,6 @@ export default [
     },
     external: [...Object.keys(pkg.dependencies)],
     plugins: [
-      ts({ typescript }),
-      terser(),
-    ],
-  },
-
-  // CLI build
-  {
-    input: 'src/cli/gitlab.ts',
-    output: {
-      file: pkg.bin.gitlab,
-      format: 'cjs',
-    },
-    external: [...Object.keys(pkg.dependencies)],
-    plugins: [
-      json(),
-      globals(),
-      builtins(),
       ts({ typescript }),
       terser(),
     ],
