@@ -92,4 +92,4 @@ export const Gitlab = bundler(APIServices);
 export type UsersBundle = InstanceType<typeof UsersBundle>;
 export type GroupsBundle = InstanceType<typeof GroupsBundle>;
 export type ProjectsBundle = InstanceType<typeof ProjectsBundle>;
-export type GitLab = InstanceType<typeof Gitlab>;
+export type Gitlab = InstanceType<typeof Gitlab>;
